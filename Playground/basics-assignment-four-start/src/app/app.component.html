@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-10">
+      <app-cockpit
+      (onServerAdd)="onServerAdded($event)"
+      (onBlueprintAdd)="onBlueprintAdded($event)"></app-cockpit>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+
+<app-server-element
+  *ngFor="let srvElement of serverElements"
+  [srvElement]="srvElement"
+>
+
+</app-server-element>
+
+
+

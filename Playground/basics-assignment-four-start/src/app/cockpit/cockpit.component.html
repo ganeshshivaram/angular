@@ -1,0 +1,11 @@
+<div class="form-group">
+  <label for="serverName">Server Name</label>
+  <input type="text" class="form-control" id="serverName" [(ngModel)]="serverName" name="serverName" placeholder="Enter a server name">
+</div>
+<div class="form-group">
+  <label for="serverContent">Server Content</label>
+  <input type="text" class="form-control" id="serverContent" [(ngModel)]="serverContent" name="serverContent" placeholder="Enter server content">
+</div>
+
+<button type="submit" class="btn btn-primary" (click)="addServer()">Add Server</button>
+<button type="submit" class="btn btn-primary" (click)="addServerBlueprint()">Add Server Blueprint</button>

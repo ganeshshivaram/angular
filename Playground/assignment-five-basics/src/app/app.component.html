@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container page-margin">
+  <div class="row">
+    <div class="col-xs-10">
+      <app-game-control
+       (evenNumberemitted)="evenNumberEmitted($event)"
+       (oddNumberemitted)="oddNumberEmitted($event)"></app-game-control>
+      <app-even *ngFor="let num of evenNumberArr"
+      [val] = "num"></app-even>
+      <app-odd *ngFor="let num of oddNumberArr" [val] = "num"></app-odd>
+    </div>
+  </div>
+</div>
+
+
