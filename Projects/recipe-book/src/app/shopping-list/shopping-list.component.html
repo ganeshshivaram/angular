@@ -1,12 +1,14 @@
+
+<app-add-ingredient
+  (afterIngredientAdded)="afterIngredientAdded($event)"></app-add-ingredient>
+
 <hr>
-<app-add-ingredient></app-add-ingredient>
-<hr>
+
 <div class="row">
-  <div class="col-xs-10">
-    <ul class="list-group">
+  <div class="col-xs-6">
+    <ul class="list-group list-group-align">
       <a
         class="list-group-item"
-        style="cursor: pointer"
         *ngFor="let ingredient of ingredients"
       >
         {{ ingredient.name }} ({{ ingredient.amount }})

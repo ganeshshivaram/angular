@@ -1,8 +1,13 @@
+<button class="btn btn-success btn-margin-left"> Add Recipe </button>
+
+<hr>
+
 <div class="row-content">
   <div class="col-sm-5">
-    <app-recipe-list></app-recipe-list>
+    <app-recipe-list
+    (onRecipeClicked)="selectedRecipe = $event"></app-recipe-list>
   </div>
   <div class="col-sm-7">
-    <app-recipe-detail></app-recipe-detail>
+    <app-recipe-detail [selectedRecipe]="selectedRecipe"></app-recipe-detail>
   </div>
 </div>

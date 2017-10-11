@@ -1,31 +1,38 @@
-<div class="row">
-  <div class="col-xs-12">
-  <div class="heading">ABC</div>
+<div *ngIf="selectedRecipe; else elseBlcok">
+  <div class="row top-buffer">
+    <div class="col-xs-12">
+      <div class="heading">{{selectedRecipe.name}}</div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="btn-group">
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle">
-        Manage Recipe <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">To Shopping List</a></li>
-        <li><a href="#">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
-      </ul>
+  <div class="row top-buffer">
+    <div class="col-xs-12">
+      <img [src]="selectedRecipe.imgUrl" class="img-rounded" alt="Cinque Terre" width="400" height="300">
+    </div>
+  </div>
+  <div class="row top-buffer">
+    <div class="col-xs-12">
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          type="button" data-toggle="dropdown">
+          Manage Recipe <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">To Shopping List</a></li>
+          <li><a href="#">Edit Recipe</a></li>
+          <li><a href="#">Delete Recipe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row top-buffer">
+    <div class="col-xs-12">
+      {{selectedRecipe.description}}
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    Description
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    Ingredients
-  </div>
-</div>
+<ng-template #elseBlcok>
+  <h2> No Recipe Selected</h2>
+</ng-template>
+
