@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {RecipeService} from "./recipe.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-recipe',
@@ -8,5 +9,10 @@ import {RecipeService} from "./recipe.service";
   providers: [RecipeService]
 })
 export class RecipeComponent {
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  onAddRecipe() {
+    this.router.navigate(['new'], {relativeTo: this.route });
+  }
+
 }

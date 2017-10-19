@@ -1,4 +1,4 @@
-<button class="btn btn-success btn-margin-left"> Add Recipe </button>
+<button class="btn btn-success btn-margin-left" (click)="onAddRecipe()"> Add Recipe </button>
 
 <hr>
 
@@ -7,6 +7,6 @@
     <app-recipe-list></app-recipe-list>
   </div>
   <div class="col-sm-7">
-    <app-recipe-detail></app-recipe-detail>
+    <router-outlet></router-outlet>
   </div>
 </div>

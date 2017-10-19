@@ -1,18 +1,9 @@
-<app-header
-(tabClicked)="onTabClicked($event)"
-></app-header>
+<app-header></app-header>
 
 <div class="container-fluid">
-  <div class="row" *ngIf="currentSelectedTab === 'recipe'; else elseBlock">
-    <div class="col-xs-12">
-      <app-recipe></app-recipe>
-    </div>
-  </div>
-  <ng-template #elseBlock>
   <div class="row">
     <div class="col-xs-12">
-      <app-shopping-list></app-shopping-list>
+     <router-outlet></router-outlet>
     </div>
   </div>
-  </ng-template>
 </div>

@@ -1,47 +1,43 @@
-<div *ngIf="selectedRecipe; else elseBlcok">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="heading">{{selectedRecipe.name}}</div>
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="heading">{{selectedRecipe.name}}</div>
   </div>
-  <div class="row top-buffer">
-    <div class="col-xs-12">
-      <img [src]="selectedRecipe.imgUrl" class="img-rounded" alt="Cinque Terre" width="400" height="300">
-    </div>
+</div>
+<div class="row top-buffer">
+  <div class="col-xs-12">
+    <img [src]="selectedRecipe.imgUrl" class="img-rounded" alt="Cinque Terre" width="400" height="300">
   </div>
-  <div class="row top-buffer">
-    <div class="col-xs-12">
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-primary dropdown-toggle"
-          type="button" data-toggle="dropdown">
-          Manage Recipe <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a (click)="moveToShoppingList(selectedRecipe.ingredients)" style="cursor: pointer">To Shopping List</a></li>
-          <li><a href="#">Edit Recipe</a></li>
-          <li><a href="#">Delete Recipe</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row top-buffer">
-    <div class="col-xs-12">
-      {{selectedRecipe.description}}
-    </div>
-  </div>
-
-  <div class="row top-buffer">
-    <div class="col-xs-12">
-      <ul class="list-group" *ngFor="let ingredient of selectedRecipe.ingredients">
-        <li class="list-group-item">{{ingredient.name}} ( {{ingredient.amount}} )</li>
+</div>
+<div class="row top-buffer">
+  <div class="col-xs-12">
+    <div class="btn-group">
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+        type="button" data-toggle="dropdown">
+        Manage Recipe <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" style="cursor: pointer">
+        <li><a (click)="moveToShoppingList(selectedRecipe.ingredients)" style="cursor: pointer">To Shopping List</a>
+        </li>
+        <li><a routerLink="edit">Edit Recipe</a></li>
+        <li><a>Delete Recipe</a></li>
       </ul>
     </div>
   </div>
-
 </div>
-<ng-template #elseBlcok>
-  <h2> No Recipe Selected</h2>
-</ng-template>
+<div class="row top-buffer">
+  <div class="col-xs-12">
+    {{selectedRecipe.description}}
+  </div>
+</div>
+
+<div class="row top-buffer">
+  <div class="col-xs-12">
+    <ul class="list-group" *ngFor="let ingredient of selectedRecipe.ingredients">
+      <li class="list-group-item">{{ingredient.name}} ( {{ingredient.amount}} )</li>
+    </ul>
+  </div>
+</div>
+
 
