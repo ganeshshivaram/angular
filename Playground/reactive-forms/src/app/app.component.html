@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+      <form [formGroup]="pgForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <label class="col-form-label" for="userName">Username</label>
+          <input type="text"
+                 class="form-control"
+                 id="userName"
+                 formControlName="username"
+                 placeholder="Please enter a username">
+          <span *ngIf="!pgForm.get('username').valid && pgForm.get('username').touched" class="help-block"> Please enter a valid username </span>
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="emailId">Email</label>
+          <input type="text"
+                 class="form-control"
+                 id="emailId"
+                 placeholder="Please enter an email address"
+                 formControlName="email">
+          <span *ngIf="!pgForm.get('email').valid && pgForm.get('email').touched" class="help-block"> Please enter a valid email address </span>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input type="radio" [value]="gender" formControlName="gender"> {{gender}}
+          </label>
+        </div>
+
+        <div formArrayName="hobbies">
+          <h4> Your hobbies</h4>
+          <button class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>
+
+          <div class="form-group" *ngFor="let hobby of pgForm.get('hobbies').controls; let i = index;">
+            <input type="text"
+                   class="form-control"
+                   [formControlName]="i">
+
+          </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <span *ngIf="!pgForm.valid && pgForm.touched" class="help-block"> Please enter valid data </span>
+      </form>
+
+    </div>
+  </div>
+</div>
