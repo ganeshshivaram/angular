@@ -116,7 +116,7 @@
     <handled-path value="$PROJECT_DIR$/services-assignment-start/node_modules" />
     <handled-path value="$PROJECT_DIR$/services-start/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="974" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -217,7 +217,7 @@
     <option name="totallyTimeSpent" value="62190000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
