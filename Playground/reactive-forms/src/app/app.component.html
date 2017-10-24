@@ -32,6 +32,7 @@
           <button class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>
 
           <div class="form-group" *ngFor="let hobby of pgForm.get('hobbies').controls; let i = index;">
+
             <input type="text"
                    class="form-control"
                    [formControlName]="i">
