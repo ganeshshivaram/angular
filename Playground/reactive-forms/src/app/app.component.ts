@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Observable} from "rxjs/Observable";
-import {promise} from "selenium-webdriver";
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +31,13 @@ export class AppComponent implements OnInit {
   onAddHobby() {
     (<FormArray>this.pgForm.get('hobbies')).push(new FormControl(null, [Validators.required]));
   }
+
+   /* IMPORTANT
+    * U Can subscribe to form value changes using an observable. this.pgForm.valueChanges.subscribe( (newValue) => { } );
+    * U Can subscribe to form status changes using an observable. this.pgForm.statusChanges.subscribe( (newValue) => { } );
+    * U Can subscribe to form control/property status changes using an observable. this.pgForm.valueChanges.controls[].subscribe( (newValue) => { } );
+    * U can update form value using this.pgForm.setValue / this.pgForm.patchValue
+   */
 
   /* custom validator */
   forbiddenNames(control: FormControl): {[str: string]: boolean} {
