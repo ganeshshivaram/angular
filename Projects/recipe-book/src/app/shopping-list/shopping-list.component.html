@@ -1,17 +1,18 @@
 
-<app-add-ingredient
-  (afterIngredientAdded)="afterIngredientAdded($event)"></app-add-ingredient>
+<app-add-ingredient></app-add-ingredient>
 
 <hr>
 
 <div class="row">
   <div class="col-xs-6">
     <ul class="list-group list-group-align">
+
       <a
         class="list-group-item"
-        *ngFor="let ingredient of ingredients"
-      >
-        {{ ingredient.name }} ({{ ingredient.amount }})
+        style="cursor: pointer"
+        (click)="onItemClick(i)"
+        *ngFor="let ingredient of ingredients; let i = index">
+         {{ ingredient.name }} ({{ ingredient.amount }})
       </a>
     </ul>
   </div>
