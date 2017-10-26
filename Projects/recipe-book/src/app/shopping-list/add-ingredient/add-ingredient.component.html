@@ -32,7 +32,7 @@
       <div class="form-row col-md-12 form-input-align">
         <div class="form-group col-md-6">
           <button class="btn btn-success" type="submit" [disabled]="!ingForm.valid">{{isEditMode ? 'Update' : 'Add'}}</button>
-          <button class="btn btn-danger" type="button" (click)="onDelete()">Delete</button>
+          <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="isEditMode">Delete</button>
           <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
         </div>
       </div>

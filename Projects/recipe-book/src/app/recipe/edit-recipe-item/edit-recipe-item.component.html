@@ -1,6 +1,57 @@
-<p *ngIf="isEditMode; else elseBlock">
-  edit-recipe-item works!
-</p>
-<ng-template #elseBlock>
-  <p>add-mode works</p>
-</ng-template>
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="recipeForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
+        <button type="button" class="btn btn-danger" (click)="onResetNavigate()">Cancel</button>
+      </div>
+      <div class="form-group">
+        <label for="name">Recipe Name:</label>
+        <input type="text"
+               class="form-control"
+               id="name"
+               formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="imagePath">Image Path:</label>
+        <input type="text"
+               class="form-control"
+               id="imagePath"
+               formControlName="imgUrl"
+               #imagePath>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control"
+                  rows="5"
+                  id="description"
+                  formControlName="description"></textarea>
+      </div>
+
+      <div class="form-group" formArrayName="ingredients">
+        <div class="col-xs-12 row-margin nopadding"  *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i=index;"
+             [formGroupName]="i">
+          <div class="col-xs-8 nopadding">
+            <input class="form-control" type="text" formControlName="name">
+          </div>
+          <div class="col-xs-2">
+            <input class="form-control" type="number" formControlName="amount">
+          </div>
+          <div class="col-xs-2 nopadding">
+            <button class="btn btn-danger" type="button" (click)="removeIngredient(i)">X</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-success row-margin" (click)="onAddIngredient()">Add Ingredient</button>
+
+      </div>
+    </form>
+  </div>
+</div>

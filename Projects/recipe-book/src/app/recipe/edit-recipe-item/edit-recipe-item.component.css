@@ -1,0 +1,12 @@
+.row-margin {
+  margin-top: 10px;
+}
+
+.nopadding {
+  padding: 0px !important;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: solid 1px #880000;
+}
