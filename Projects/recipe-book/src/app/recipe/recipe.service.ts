@@ -1,27 +1,42 @@
-import {recipes} from "./recipe.data";
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {Ingredient} from "../common/ingredient.model";
 import {ShoppingListService} from "../shopping-list/shopping-list.service";
 import {Recipe} from "./models/recipe.model";
 import {Subject} from "rxjs/Subject";
+import {StorageService} from "../common/storage-service.service";
 
 @Injectable()
 export class RecipeService {
 
   public onRecipeAddOrUpdate = new Subject<Recipe[]>();
+  public onFetchingRecipesFromServer = new Subject<Boolean>();
+
   public onRemovingIngredientFromRecipe = new Subject<Recipe>();
-  private recipes = recipes;
+  private recipes;
 
-  constructor(private shoppingListService: ShoppingListService) {
+  constructor(private shoppingListService: ShoppingListService, private storageService: StorageService) {
+    this.getRecipesFromServer().subscribe(
+      (recipes: Recipe[]) => {
+        this.recipes = recipes;
+        this.onFetchingRecipesFromServer.next(true);
+      }
+    );
+  }
 
+  getRecipesFromServer() {
+    return this.storageService.getRecipesFromServer().map(
+      (response: Recipe[]) => {
+        return response.slice();
+      }
+    );
   }
 
   getRecipes() {
-    return recipes.slice();
+    return this.recipes.slice();
   }
 
   getRecipeById(id: number) {
-    return recipes.slice()[id];
+    return this.recipes.slice()[id];
   }
 
   moveToShoppingList(ingredients: Ingredient[]) {
@@ -46,5 +61,9 @@ export class RecipeService {
   deleteRecipe(id: number) {
     this.recipes.splice(id,1);
     this.onRecipeAddOrUpdate.next(this.recipes.slice());
+  }
+
+  reloadNewRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
   }
 }

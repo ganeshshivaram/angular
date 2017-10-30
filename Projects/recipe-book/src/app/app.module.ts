@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app.routing.module";
+import {HttpModule} from "@angular/http";
+
+import {StorageService} from "./common/storage-service.service";
+import {RecipeService} from "./recipe/recipe.service";
+import {ShoppingListService} from "./shopping-list/shopping-list.service";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,9 +16,11 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AddIngredientComponent } from './shopping-list/add-ingredient/add-ingredient.component';
 import { RecipeItemComponent } from './recipe/recipe-item/recipe-item.component';
-import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import { NoRecipeSelectedComponent } from './no-recipe-selected/no-recipe-selected.component';
 import { EditRecipeItemComponent } from './recipe/edit-recipe-item/edit-recipe-item.component';
+
+
+
 
 
 @NgModule({
@@ -32,10 +39,11 @@ import { EditRecipeItemComponent } from './recipe/edit-recipe-item/edit-recipe-i
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

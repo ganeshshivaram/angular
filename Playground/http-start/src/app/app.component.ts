@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { Response } from '@angular/http';
+
 import {ServerService} from './server.service';
 
 @Component({
@@ -6,7 +8,9 @@ import {ServerService} from './server.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+  appName = {};
   servers = [
     {
       name: 'Testserver',
@@ -34,6 +38,10 @@ export class AppComponent {
   constructor(private serverService: ServerService) {
   }
 
+  ngOnInit(): void {
+    this.getAppName();
+  }
+
   onSaveServers() {
     this.serverService.saveServers(this.servers)
       .subscribe(
@@ -47,9 +55,16 @@ export class AppComponent {
 
   getServers() {
     this.serverService.getServers().subscribe(
-      (response) => { console.log(response); },
+      (response: Response) => {
+          const data = response.json();
+          console.log(data);
+        },
       (error) => { console.log(error); }
     );
+  }
+
+  getAppName() {
+     this.appName = this.serverService.getAppName(); // use async filter to resolve the observable
   }
 
   private generateId() {
