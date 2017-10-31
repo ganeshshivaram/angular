@@ -76,6 +76,10 @@ export class EditRecipeItemComponent implements OnInit {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
 
+  getIngredients() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls
+  }
+
   onAddIngredient() {
     const ingr = new FormGroup({
       name: new FormControl('', [Validators.required]),
